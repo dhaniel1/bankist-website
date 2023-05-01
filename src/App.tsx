@@ -1,25 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { HeaderBody, Nav } from "./components/header";
+import {
+  Features,
+  Operations,
+  SignUp,
+  Testimonials,
+} from "./components/sections";
+import { Footer } from "./components/footer";
+import SignupModal from "./components/sections/modal";
+import { context } from "./store/context";
 
 function App() {
+  const [openModal, setOpenModal] = useState<boolean>(false);
+
+  function handleModalClick() {
+    setOpenModal(!openModal);
+  }
+
+  function closeModalFn(e: any) {
+    setOpenModal((prevState) => !prevState);
+    console.log(e.type);
+  }
+
+  const ctx = useContext(context);
+
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    ctx.fnSetHeaderRef(headerRef);
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header ref={headerRef} id="header" className="header">
+        <Nav handleClick={handleModalClick} />
+        <HeaderBody />
       </header>
-    </div>
+      <Features />
+      <Operations />
+      <Testimonials />
+      <SignUp />
+      <Footer />
+      {openModal && (
+        <SignupModal modalState={openModal} closeModalFn={closeModalFn} />
+      )}
+      {/* There should be a signup Modal */}
+    </>
   );
 }
 
