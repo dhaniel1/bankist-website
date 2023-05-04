@@ -7,7 +7,7 @@ import {
   Testimonials,
 } from "./components/sections";
 import { Footer } from "./components/footer";
-import SignupModal from "./components/sections/modal";
+import SignupModal from "./components/shared/modal";
 import { context } from "./store/context";
 
 function App() {
@@ -39,7 +39,7 @@ function App() {
       <Features />
       <Operations />
       <Testimonials />
-      <SignUp />
+      <SignUp handleClick={handleModalClick} />
       <Footer />
       {openModal && (
         <SignupModal modalState={openModal} closeModalFn={closeModalFn} />

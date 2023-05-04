@@ -53,6 +53,7 @@ const ContextProvider = (props: any) => {
       rootMargin: `-${navHeight || "90"}px`,
     });
 
+    if (headerCurrent) headerObserver.observe(headerCurrent);
     // headerObserver.observe(headerCurrent);
 
     console.log(headerCurrent, featureSectionCurrent, navHeight);

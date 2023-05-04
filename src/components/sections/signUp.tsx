@@ -7,7 +7,7 @@ import { Button } from "../shared";
     HTMLElement
   > {} */
 
-const SignUp: React.FC = () => {
+const SignUp: React.FC<{ handleClick: () => void }> = (props) => {
   return (
     <>
       <section className="section section--sign-up">
@@ -17,7 +17,7 @@ const SignUp: React.FC = () => {
             today!
           </h3>
         </div>
-        <Button className="btn btn--show-modal">
+        <Button onClick={props.handleClick} className="btn btn--show-modal">
           Open your free account today!
         </Button>
       </section>

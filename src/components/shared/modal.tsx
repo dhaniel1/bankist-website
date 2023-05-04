@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "./form";
+import Form from "../sections/form";
 import ReactDOM from "react-dom";
 
 const Modal: React.FC<{

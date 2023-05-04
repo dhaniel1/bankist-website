@@ -53,13 +53,6 @@ const Footer: React.FC = () => {
         </ul>
         <Img src={image.icon} alt="Logo" className="footer__logo" />
         <p className="footer__copyright">
-          {/*  &copy; Copyright by 
-           <Link
-            className="footer__link twitter-link"
-            target="_blank"
-            to="https://twitter.com/jonasschmedtman">
-            @dhani__el
-          </Link> */}
           Many thanks to those who motivated this project. Special thanks to
           io.bami & Man.TunE'
         </p>
