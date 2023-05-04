@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { HeaderBody, Nav } from "./components/header";
 import {
   Features,
@@ -9,19 +9,10 @@ import {
 import { Footer } from "./components/footer";
 import SignupModal from "./components/shared/modal";
 import { context } from "./store/context";
+import { modalContext } from "./store";
 
 function App() {
-  const [openModal, setOpenModal] = useState<boolean>(false);
-
-  function handleModalClick() {
-    setOpenModal(!openModal);
-  }
-
-  function closeModalFn(e: any) {
-    setOpenModal((prevState) => !prevState);
-    console.log(e.type);
-  }
-
+  const modalCtx = useContext(modalContext);
   const ctx = useContext(context);
 
   const headerRef = useRef<HTMLElement>(null);
@@ -33,17 +24,15 @@ function App() {
   return (
     <>
       <header ref={headerRef} id="header" className="header">
-        <Nav handleClick={handleModalClick} />
+        <Nav />
         <HeaderBody />
       </header>
       <Features />
       <Operations />
       <Testimonials />
-      <SignUp handleClick={handleModalClick} />
+      <SignUp />
       <Footer />
-      {openModal && (
-        <SignupModal modalState={openModal} closeModalFn={closeModalFn} />
-      )}
+      {modalCtx.openModal && <SignupModal />}
       {/* There should be a signup Modal */}
     </>
   );

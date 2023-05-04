@@ -1,13 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "../shared";
+import { modalContext } from "../../store";
 
-/* interface Iprop
-  extends React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLElement>,
-    HTMLElement
-  > {} */
-
-const SignUp: React.FC<{ handleClick: () => void }> = (props) => {
+const SignUp: React.FC = () => {
+  const modalCtx = useContext(modalContext);
   return (
     <>
       <section className="section section--sign-up">
@@ -17,7 +13,9 @@ const SignUp: React.FC<{ handleClick: () => void }> = (props) => {
             today!
           </h3>
         </div>
-        <Button onClick={props.handleClick} className="btn btn--show-modal">
+        <Button
+          onClick={modalCtx.handleModalClick}
+          className="btn btn--show-modal">
           Open your free account today!
         </Button>
       </section>

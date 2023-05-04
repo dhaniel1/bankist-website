@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import Form from "../sections/form";
 import ReactDOM from "react-dom";
+import { modalContext } from "../../store";
 
-const Modal: React.FC<{
-  closeModal: (e: any) => void;
-}> = (props) => {
+const Modal: React.FC = (props) => {
+  const modalCtx = useContext(modalContext);
+
   return (
     <div className="modal">
-      <button onClick={(e) => props.closeModal(e)} className="btn--close-modal">
+      <button
+        onClick={(e) => modalCtx.closeModalFn(e)}
+        className="btn--close-modal">
         &times;
       </button>
       <h2 className="modal__header">
@@ -19,26 +22,24 @@ const Modal: React.FC<{
   );
 };
 
-const Overlay: React.FC<{ closeModal: (e: any) => void }> = (props) => {
-  return <div onClick={(e) => props.closeModal(e)} className="overlay"></div>;
+const Overlay: React.FC = (props) => {
+  const modalCtx = useContext(modalContext);
+  return (
+    <div onClick={(e) => modalCtx.closeModalFn(e)} className="overlay"></div>
+  );
 };
 
-const SignupModal: React.FC<{
-  modalState: boolean;
-  closeModalFn: (e: any) => void;
-}> = (props) => {
+const SignupModal: React.FC = (props) => {
   return (
     <>
-      {props.modalState &&
-        ReactDOM.createPortal(
-          <Modal closeModal={props.closeModalFn} />,
-          document.getElementById("overlay") as HTMLElement
-        )}
-      {props.modalState &&
-        ReactDOM.createPortal(
-          <Overlay closeModal={props.closeModalFn} />,
-          document.getElementById("overlay") as HTMLElement
-        )}
+      {ReactDOM.createPortal(
+        <Modal />,
+        document.getElementById("overlay") as HTMLElement
+      )}
+      {ReactDOM.createPortal(
+        <Overlay />,
+        document.getElementById("overlay") as HTMLElement
+      )}
     </>
   );
 };

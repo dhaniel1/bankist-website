@@ -3,10 +3,12 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { Button, Img, ListItem } from "../shared";
 import { image } from "../../assets/images";
 import { context } from "../../store/context";
+import { modalContext } from "../../store";
 
-export const Nav: React.FC<{ handleClick: () => void }> = (props) => {
+export const Nav: React.FC = () => {
   const [style, setStyle] = useState("nav");
   const ctx = useContext(context);
+  const modalCtx = useContext(modalContext);
 
   const navRef = useRef<HTMLElement>(null);
 
@@ -49,7 +51,7 @@ export const Nav: React.FC<{ handleClick: () => void }> = (props) => {
         </ListItem>
         <Button
           className="btn btn--show-modal nav__link--btn"
-          onClick={props.handleClick}>
+          onClick={modalCtx.handleModalClick}>
           Open account
         </Button>
       </ul>

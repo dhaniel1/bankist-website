@@ -2,13 +2,6 @@ import React, { createContext, useEffect, useState } from "react";
 
 type contextObjType = React.RefObject<Element> | null;
 
-interface contextObj {
-  contextStyle: string;
-  fnSetNavRef: (data: React.RefObject<HTMLElement>) => any;
-  fnSetHeaderRef: (data: React.RefObject<HTMLElement>) => any;
-  fnFeatureSectionRef: (data: React.RefObject<HTMLElement>) => any;
-}
-
 export const context = createContext<contextObj>({
   contextStyle: "nav",
   fnSetNavRef: (data: React.RefObject<HTMLElement>) => {},
