@@ -3,7 +3,7 @@ import Form from "../sections/form";
 import ReactDOM from "react-dom";
 import { modalContext } from "../../store";
 
-const Modal: React.FC = (props) => {
+const Modal: React.FC = () => {
   const modalCtx = useContext(modalContext);
 
   return (
@@ -22,14 +22,14 @@ const Modal: React.FC = (props) => {
   );
 };
 
-const Overlay: React.FC = (props) => {
+const Overlay: React.FC = () => {
   const modalCtx = useContext(modalContext);
   return (
     <div onClick={(e) => modalCtx.closeModalFn(e)} className="overlay"></div>
   );
 };
 
-const SignupModal: React.FC = (props) => {
+const SignupModal: React.FC = () => {
   return (
     <>
       {ReactDOM.createPortal(

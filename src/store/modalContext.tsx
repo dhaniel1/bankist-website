@@ -16,6 +16,7 @@ const ModalContextProvider = (props: any) => {
   function closeModalFn(e: CLoseModalFnType) {
     setOpenModal((prevState) => !prevState);
   }
+
   return (
     <modalContext.Provider
       value={{ handleModalClick, closeModalFn, openModal }}>
