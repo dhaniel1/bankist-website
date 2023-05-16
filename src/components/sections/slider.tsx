@@ -1,28 +1,27 @@
 import React from "react";
+interface Iprop
+  extends React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  > {
+  data: any;
+}
 
-const Slider = () => {
+const SliderItem = (props: Iprop) => {
+  const { data } = props;
   return (
     <div className="slide">
       <div className="testimonial">
-        <h5 className="testimonial__header">
-          Finally free from old-school banks
-        </h5>
-        <blockquote className="testimonial__text">
-          Debitis, nihil sit minus suscipit magni aperiam vel tenetur incidunt
-          commodi architecto numquam omnis nulla autem, necessitatibus
-          blanditiis modi similique quidem. Odio aliquam culpa dicta beatae quod
-          maiores ipsa minus consequatur error sunt, deleniti saepe aliquid quos
-          inventore sequi. Necessitatibus id alias reiciendis, perferendis
-          facere.
-        </blockquote>
+        <h5 className="testimonial__header">{data.header}</h5>
+        <blockquote className="testimonial__text">{data.body}</blockquote>
         <address className="testimonial__author">
-          <img src="img/user-3.jpg" alt="" className="testimonial__photo" />
-          <h6 className="testimonial__name">Francisco Gomes</h6>
-          <p className="testimonial__location">Lisbon, Portugal</p>
+          <img src={data.img} alt="" className="testimonial__photo" />
+          <h6 className="testimonial__name"> {data.name}</h6>
+          <p className="testimonial__location"> {data.location}</p>
         </address>
       </div>
     </div>
   );
 };
 
-export default Slider;
+export default SliderItem;

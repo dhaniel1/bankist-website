@@ -6,22 +6,33 @@ import {
   ButtonNext,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
+import { testimonialsData } from "../shared/contentData";
+import SliderItem from "./slider";
 
 function SwiperComponent() {
   return (
     <div>
-    <CarouselProvider
-      naturalSlideWidth={10}
-      naturalSlideHeight={12.5}
-      totalSlides={3}>
-      <Slider>
-        <Slide style={{border: '3px solid blue', height: '350px'}} index={0}>I am the first Slide.</Slide>
-        <Slide style={{border: '3px solid blue', height: '350px'}} index={1}>I am the second Slide.</Slide>
-        <Slide style={{border: '3px solid blue', height: '350px'}} index={2}>I am the third Slide.</Slide>
-      </Slider>
-      <ButtonBack style={{height: '300px', position: 'absolute', background: 'red', top: 0}}>Back</ButtonBack>
-      <ButtonNext style={{height: '300px', position: 'absolute', background: 'red', top: 0, right: 0}}>Next</ButtonNext>
-    </CarouselProvider>
+      <CarouselProvider
+        naturalSlideWidth={10}
+        naturalSlideHeight={12.5}
+        totalSlides={3}
+        infinite={true}>
+        <Slider>
+          {testimonialsData.map((testimonial, i) => {
+            return (
+              <Slide index={i} key={i}>
+                <SliderItem data={testimonial} />
+              </Slide>
+            );
+          })}
+        </Slider>
+        <ButtonBack className="slider__btn slider__btn--left">
+          &larr;
+        </ButtonBack>
+        <ButtonNext className="slider__btn slider__btn--right">
+          &rarr;
+        </ButtonNext>
+      </CarouselProvider>
     </div>
   );
 }

@@ -29,12 +29,12 @@ const ContextProvider = (props: any) => {
   // const headerrrr = document.querySelector(".header");
   useEffect(() => {
     const headerCurrent = headerRef?.current;
-    const featureSectionCurrent = featureSectionRef?.current;
+    // const featureSectionCurrent = featureSectionRef?.current;
     const navHeight = navRef?.current?.clientHeight;
 
     const callBack: IntersectionObserverCallback = (entries) => {
       const [entry] = entries;
-      console.log(entry);
+      // console.log(entry);
 
       if (!entry.isIntersecting) setNavStyle("nav sticky");
       else setNavStyle("nav");
@@ -49,7 +49,7 @@ const ContextProvider = (props: any) => {
     if (headerCurrent) headerObserver.observe(headerCurrent);
     // headerObserver.observe(headerCurrent);
 
-    console.log(headerCurrent, featureSectionCurrent, navHeight);
+    // console.log(headerCurrent, featureSectionCurrent, navHeight);
   }, [featureSectionRef, headerRef, navRef]);
 
   return (

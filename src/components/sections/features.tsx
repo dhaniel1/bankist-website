@@ -5,13 +5,43 @@ import { image } from "../../assets/images";
 import { context } from "../../store/context";
 
 const Features: React.FC = (props) => {
-  const ctx = useContext(context);
+  const { fnFeatureSectionRef } = useContext(context);
   const featureSectionRef = useRef(null);
+  /*  const digitalImgRef = useRef(null);
+  const growImgRef = useRef(null);
+  const cardImgRef = useRef(null); */
 
   useEffect(() => {
-    ctx.fnFeatureSectionRef(featureSectionRef);
+    fnFeatureSectionRef(featureSectionRef);
   });
 
+  /*  useEffect(() => {
+    const currents = [
+      digitalImgRef.current,
+      growImgRef.current,
+      cardImgRef.current,
+    ];
+    const callBack: IntersectionObserverCallback = (entries, observer) => {
+      const [entry] = entries;
+      // console.log(entry);
+
+      if (!entry.isIntersecting) return;
+      // console.log(entry.target.);
+
+      observer.unobserve(entry.target);
+    };
+
+    const headerObserver = new IntersectionObserver(callBack, {
+      root: null,
+      threshold: 0,
+      rootMargin: `200px`,
+    });
+
+    currents.forEach((current) => {
+      if (current) headerObserver.observe(current);
+    });
+  }, [digitalImgRef, growImgRef]);
+ */
   return (
     <>
       <section className="section" ref={featureSectionRef} id="section--1">
@@ -24,9 +54,10 @@ const Features: React.FC = (props) => {
 
         <div className="features">
           <Img
-            src={image.digitalLazy}
-            data-src="img/digital.jpg"
+            src={image.digital}
+            // data-src={image.digital}
             alt="Computer"
+            // ref={digitalImgRef}
             className="features__img lazy-img"
           />
           <div className="features__feature">
@@ -57,16 +88,18 @@ const Features: React.FC = (props) => {
             </p>
           </div>
           <Img
-            src={image.growLazy}
-            data-src="img/grow.jpg"
+            src={image.grow}
+            // data-src="img/grow.jpg"
             alt="Plant"
+            // ref={growImgRef}
             className="features__img lazy-img"
           />
 
           <Img
-            src={image.cardLazy}
-            data-src="img/card.jpg"
+            src={image.card}
+            // data-src="img/card.jpg"
             alt="Credit card"
+            // ref={cardImgRef}
             className="features__img lazy-img"
           />
           <div className="features__feature">

@@ -5,8 +5,12 @@ interface Iprop
     HTMLImageElement
   > {}
 
-const Img = (prop: Iprop) => {
-  return <img {...prop}>{prop.children}</img>;
-};
+const Img = React.forwardRef<HTMLImageElement, Iprop>((prop: Iprop, ref) => {
+  return (
+    <img ref={ref} {...prop}>
+      {prop.children}
+    </img>
+  );
+});
 
 export default Img;

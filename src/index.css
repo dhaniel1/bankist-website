@@ -125,9 +125,9 @@ img {
   transition: filter 0.5s;
 }
 
-.lazy-img {
+/* .lazy-img {
   filter: blur(20px);
-}
+} */
 
 /* NAVIGATION */
 .nav {
@@ -540,9 +540,9 @@ h4 {
   font-size: 1.5rem;
 }
 
-.section__title--testimonials {
+/* .section__title--testimonials {
   margin-bottom: 4rem;
-}
+} */
 
 /* SIGNUP */
 .section--sign-up {
